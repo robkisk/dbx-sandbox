@@ -1,7 +1,7 @@
 [project]
 name = "databricks-template"
 version = "0.1.0"
-description = "Modern Databricks App Template - FastAPI backend with React TypeScript frontend"
+description = "Modern Databricks Template - FastAPI backend with React TypeScript frontend"
 authors = [
   { name = "Robby Kiskanyan", email = "robby.kiskanyan@databricks.com" },
 ]
