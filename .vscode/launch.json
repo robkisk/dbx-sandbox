@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run on Databricks",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "internalConsole",
+      "justMyCode": true,
+      //"envFile": "${workspaceFolder}/rk.env",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}${env:PYTHONPATH}"
+        // "PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT": "2",
+        // "DATABRICKS_CONFIG_PROFILE": "<config_profile>"
+      },
+      "args": [
+        "--catalog",
+        "prod_bu1",
+        "--schema",
+        "proj_schema1",
+        "--env",
+        "prod"
+      ]
+    },
+    {
+      "name": "Run Notebook on Databricks as Workflow",
+      "type": "databricks-workflow",
+      "request": "launch",
+      "program": "${file}",
+      "parameters": {
+        "catalog": "bu1_dev",
+        "schema": ""
+      }
+    },
+    {
+      "type": "databricks",
+      "request": "launch",
+      "name": "Unit Tests (on Databricks)",
+      "program": "${workspaceFolder}/pytest_databricks.py",
+      "args": ["."],
+      "env": {}
+    }
+  ]
+}
