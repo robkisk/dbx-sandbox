@@ -1,0 +1,14 @@
+# The main pipeline for dbx_template
+resources:
+  pipelines:
+    dbx_template_pipeline:
+      name: dbx_template_pipeline
+      catalog: dev_eus2_robkisk
+      schema: dbx_template_${bundle.target}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
