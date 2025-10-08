@@ -30,7 +30,7 @@ resources:
             - task_key: refresh_pipeline
           environment_key: default
           python_wheel_task:
-            package_name: dbx_template
+            package_name: databricks_connect
             entry_point: main
 
       # A list of task execution environment specifications that can be referenced by tasks of this job.
@@ -40,6 +40,6 @@ resources:
           # Full documentation of this spec can be found at:
           # https://docs.databricks.com/api/workspace/jobs/create#environments-spec
           spec:
-            environment_version: "2"
+            environment_version: "3"
             dependencies:
               - ../dist/*.whl

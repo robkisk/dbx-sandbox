@@ -6,7 +6,7 @@ authors = [
   { name = "Robby Kiskanyan", email = "robby.kiskanyan@databricks.com" },
 ]
 
-requires-python = "==3.11.12"
+requires-python = ">=3.12"
 
 dependencies = [
   "databricks-sdk>=0.67.0",
