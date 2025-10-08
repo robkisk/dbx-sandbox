@@ -3,7 +3,7 @@ resources:
   pipelines:
     dbx_template_pipeline:
       name: dbx_template_pipeline
-      catalog: dev_eus2_robkisk
+      catalog: bu1_dev
       schema: dbx_template_${bundle.target}
       serverless: true
       libraries:
