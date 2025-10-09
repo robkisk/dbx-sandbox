@@ -2,7 +2,6 @@
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
   name: dbx_template
-  uuid: 1f6ded8e-7534-4849-977b-da575773b83e
 
 artifacts:
   python_artifact:
