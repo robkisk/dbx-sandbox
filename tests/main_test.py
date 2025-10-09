@@ -1,4 +1,4 @@
-from main import find_all_taxis
+from databricks_connect.main import find_all_taxis
 
 
 def test_find_all_taxis():
