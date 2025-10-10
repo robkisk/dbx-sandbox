@@ -1,0 +1,69 @@
+{
+  "mcpServers": {
+    "serena": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--enable-web-dashboard",
+        "false"
+      ]
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    },
+    "Context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "asana": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://mcp.asana.com/sse"]
+    },
+    "dbx-mcp-l": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/robby.kiskanyan/dev/mcp/projects/demos/databricks-mcp",
+        "run",
+        "databricks-mcp-server"
+      ],
+      "env": {
+        "DATABRICKS_HOST": "${DB_HOST}",
+        "DATABRICKS_TOKEN": "${DAPI_DEV}",
+        "DATABRICKS_WAREHOUSE_ID": "${DB_WAREHOUSE_ID}",
+        "RUNNING_VIA_CURSOR_MCP": "true"
+      }
+    },
+    "dbx-mcp-app": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--refresh",
+        "--from",
+        "git+https://github.com/robkisk/custom-mcp-databricks-app.git",
+        "dba-mcp-proxy",
+        "--databricks-host",
+        "${DB_HOST}",
+        "--databricks-app-url",
+        "https://dbx-custom-mcp-app-2065124280106945.5.azure.databricksapps.com"
+      ],
+      "env": {}
+    },
+    "terraform": {
+      "type": "stdio",
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "hashicorp/terraform-mcp-server"],
+      "env": {}
+    }
+  }
+}
+
+
