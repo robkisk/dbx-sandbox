@@ -27,7 +27,79 @@
       "command": "npx",
       "args": ["mcp-remote", "https://mcp.asana.com/sse"]
     },
-    "dbx-mcp-l": {
+    "genie-feaz": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://adb-984752964297111.11.azuredatabricks.net/api/2.0/mcp/genie/01f07200699f1c41a45931716cce08e0",
+        "--header",
+        "Authorization: Bearer ${DAPI_FEAZ}"
+      ]
+    },
+    "uc-functions-feaz": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://adb-984752964297111.11.azuredatabricks.net/api/2.0/mcp/functions/robkisk/c360",
+        "--header",
+        "Authorization: Bearer ${DAPI_FEAZ}"
+      ]
+    },
+    "vs-feaz": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://adb-984752964297111.11.azuredatabricks.net/api/2.0/mcp/vector-search/robkisk/c360",
+        "--header",
+        "Authorization: Bearer ${DAPI_FEAZ}"
+      ]
+    },
+    "dbsql-feaz": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://adb-984752964297111.11.azuredatabricks.net/api/2.0/mcp/sql",
+        "--header",
+        "Authorization: Bearer ${DAPI_FEAZ}"
+      ]
+    },
+    "genie-dev": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://adb-2951351452776088.8.azuredatabricks.net/api/2.0/mcp/genie/01f0b4b2aa5b1b64a7f5e827e8a11137",
+        "--header",
+        "Authorization: Bearer ${DAPI_DEV}"
+      ]
+    },
+    "uc-functions-dev": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://adb-2951351452776088.8.azuredatabricks.net/api/2.0/mcp/functions/bu1_dev/retail_c360",
+        "--header",
+        "Authorization: Bearer ${DAPI_DEV}"
+      ]
+    },
+    "vs-dev": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://adb-2951351452776088.8.azuredatabricks.net/api/2.0/mcp/vector-search/bu1_dev/ai_agent",
+        "--header",
+        "Authorization: Bearer ${DAPI_DEV}"
+      ]
+    },
+    "dbsql-dev": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://adb-2951351452776088.8.azuredatabricks.net/api/2.0/mcp/sql",
+        "--header",
+        "Authorization: Bearer ${DAPI_DEV}"
+      ]
+    },
+    "dbx-local-dev": {
       "command": "uv",
       "args": [
         "--directory",
@@ -36,13 +108,13 @@
         "databricks-mcp-server"
       ],
       "env": {
-        "DATABRICKS_HOST": "${DB_HOST}",
+        "DATABRICKS_HOST": "https://adb-2951351452776088.8.azuredatabricks.net",
         "DATABRICKS_TOKEN": "${DAPI_DEV}",
-        "DATABRICKS_WAREHOUSE_ID": "${DB_WAREHOUSE_ID}",
+        "DATABRICKS_WAREHOUSE_ID": "${DB_WH_ID_DEV}",
         "RUNNING_VIA_CURSOR_MCP": "true"
       }
     },
-    "dbx-mcp-app": {
+    "dbx-app-prod": {
       "type": "stdio",
       "command": "uvx",
       "args": [
@@ -51,9 +123,9 @@
         "git+https://github.com/robkisk/custom-mcp-databricks-app.git",
         "dba-mcp-proxy",
         "--databricks-host",
-        "${DB_HOST}",
+        "https://adb-985990099698746.6.azuredatabricks.net",
         "--databricks-app-url",
-        "https://dbx-custom-mcp-app-2065124280106945.5.azure.databricksapps.com"
+        "https://dbx-custom-mcp-app-985990099698746.6.azure.databricksapps.com"
       ],
       "env": {}
     },
@@ -62,8 +134,38 @@
       "command": "docker",
       "args": ["run", "-i", "--rm", "hashicorp/terraform-mcp-server"],
       "env": {}
+    },
+    "databricks-sdk-py Docs": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://gitmcp.io/databricks/databricks-sdk-py"]
+    },
+    "databricks-blog-posts Docs": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://gitmcp.io/databricks-solutions/databricks-blogposts"
+      ]
+    },
+    "databricks-bundles": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://gitmcp.io/databricks/bundle-examples"
+      ]
+    },
+    "Claude Code Skills": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://gitmcp.io/anthropics/skills"
+      ]
+    },
+    "Hobson Agents": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://gitmcp.io/wshobson/agents"
+      ]
     }
   }
 }
-
-
