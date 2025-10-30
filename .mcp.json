@@ -27,42 +27,6 @@
       "command": "npx",
       "args": ["mcp-remote", "https://mcp.asana.com/sse"]
     },
-    "genie-feaz": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://adb-984752964297111.11.azuredatabricks.net/api/2.0/mcp/genie/01f07200699f1c41a45931716cce08e0",
-        "--header",
-        "Authorization: Bearer ${DAPI_FEAZ}"
-      ]
-    },
-    "uc-functions-feaz": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://adb-984752964297111.11.azuredatabricks.net/api/2.0/mcp/functions/robkisk/c360",
-        "--header",
-        "Authorization: Bearer ${DAPI_FEAZ}"
-      ]
-    },
-    "vs-feaz": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://adb-984752964297111.11.azuredatabricks.net/api/2.0/mcp/vector-search/robkisk/c360",
-        "--header",
-        "Authorization: Bearer ${DAPI_FEAZ}"
-      ]
-    },
-    "dbsql-feaz": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://adb-984752964297111.11.azuredatabricks.net/api/2.0/mcp/sql",
-        "--header",
-        "Authorization: Bearer ${DAPI_FEAZ}"
-      ]
-    },
     "genie-dev": {
       "command": "npx",
       "args": [
@@ -113,21 +77,6 @@
         "DATABRICKS_WAREHOUSE_ID": "${DB_WH_ID_DEV}",
         "RUNNING_VIA_CURSOR_MCP": "true"
       }
-    },
-    "dbx-app-prod": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": [
-        "--refresh",
-        "--from",
-        "git+https://github.com/robkisk/custom-mcp-databricks-app.git",
-        "dba-mcp-proxy",
-        "--databricks-host",
-        "https://adb-985990099698746.6.azuredatabricks.net",
-        "--databricks-app-url",
-        "https://dbx-custom-mcp-app-985990099698746.6.azure.databricksapps.com"
-      ],
-      "env": {}
     },
     "terraform": {
       "type": "stdio",

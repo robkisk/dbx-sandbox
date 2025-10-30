@@ -1,0 +1,55 @@
+resources:
+  jobs:
+    retail_data_generator:
+      name: "[${bundle.target}] Retail Data Generator"
+
+      tasks:
+        - task_key: generate_retail_data
+          notebook_task:
+            notebook_path: ../src/data_generation/generate_retail_data.py
+            source: WORKSPACE
+
+          # Use serverless compute
+          environment_key: default
+
+          libraries:
+            - pypi:
+                package: dbldatagen==0.4.0.post1
+
+          timeout_seconds: 3600
+          max_retries: 1
+
+      # Job configuration
+      job_clusters: []
+
+      # Default environment for serverless
+      environments:
+        - environment_key: default
+          spec:
+            client: "1"
+            dependencies:
+              - dbldatagen==0.4.0.post1
+
+      # Schedule (optional - run daily)
+      # schedule:
+      #   quartz_cron_expression: "0 0 2 * * ?"  # 2 AM daily
+      #   timezone_id: "America/Los_Angeles"
+      #   pause_status: PAUSED
+
+      # Email notifications
+      email_notifications:
+        on_failure:
+          - ${workspace.current_user.userName}
+
+      # Permissions
+      permissions:
+        - level: CAN_VIEW
+          group_name: users
+        - level: CAN_MANAGE_RUN
+          user_name: ${workspace.current_user.userName}
+
+      # Tags
+      tags:
+        environment: ${bundle.target}
+        project: retail_analytics
+        generator: dbldatagen

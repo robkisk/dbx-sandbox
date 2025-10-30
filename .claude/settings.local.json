@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/robby.kiskanyan/.claude/**)",
+      "mcp__dbsql-dev__execute_sql_read_only"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

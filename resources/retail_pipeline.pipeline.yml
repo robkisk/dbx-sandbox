@@ -1,0 +1,30 @@
+resources:
+  pipelines:
+    retail_dlt_pipeline:
+      name: "[${bundle.target}] Retail E-commerce DLT Pipeline"
+
+      # Target catalog and schema for output tables
+      catalog: ${var.catalog_name}
+      target: ${var.schema_name}_${bundle.target}
+
+      # Pipeline configuration
+      development: true
+      continuous: false
+      photon: true
+      serverless: true
+
+      # Libraries - DLT pipeline notebook
+      libraries:
+        - notebook:
+            path: ../src/pipelines/retail_dlt_pipeline.py
+
+      # Pipeline configuration
+      configuration:
+        pipeline.description: "Delta Live Tables pipeline for retail e-commerce data processing with dbldatagen synthetic data"
+        pipeline.owner: ${workspace.current_user.userName}
+        bundle.sourcePath: ${workspace.file_path}
+
+      # Permissions
+      permissions:
+        - level: CAN_VIEW
+          group_name: users

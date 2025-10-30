@@ -22,7 +22,7 @@ def create_databricks_session(profile: str = 'dev') -> SparkSession:
       Exception: If session creation fails.
   """
   try:
-    session = DatabricksSession.builder.profile(profile).serverless().getOrCreate()
+    session = DatabricksSession.builder.profile("dev").serverless().getOrCreate()
     return session
   except Exception as e:
     raise Exception(f'Failed to create Databricks session: {e}')
