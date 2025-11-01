@@ -5,13 +5,19 @@ resources:
 
       # Target catalog and schema for output tables
       catalog: ${var.catalog_name}
-      target: ${var.schema_name}_${bundle.target}
+      target: ${var.target_schema}
 
-      # Pipeline configuration
-      development: true
+      # Pipeline configuration - dynamic based on environment
+      development: ${{ bundle.target == "dev" }}
       continuous: false
       photon: true
       serverless: true
+
+      # Edition configuration
+      edition: ADVANCED
+
+      # Channel for pipeline runtime
+      channel: CURRENT
 
       # Libraries - DLT pipeline notebook
       libraries:
@@ -23,8 +29,20 @@ resources:
         pipeline.description: "Delta Live Tables pipeline for retail e-commerce data processing with dbldatagen synthetic data"
         pipeline.owner: ${workspace.current_user.userName}
         bundle.sourcePath: ${workspace.file_path}
+        bundle.target: ${bundle.target}
 
-      # Permissions
+      # Notifications
+      notifications:
+        - alerts:
+            - on-update-failure
+            - on-update-fatal-failure
+            - on-flow-failure
+          email_recipients:
+            - ${workspace.current_user.userName}
+
+      # Permissions - more granular access control
       permissions:
         - level: CAN_VIEW
           group_name: users
+        - level: CAN_RUN
+          user_name: ${workspace.current_user.userName}

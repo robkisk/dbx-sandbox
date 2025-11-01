@@ -1,5 +1,30 @@
 bundle:
   name: dbx-sandbox
+  
+  # Git integration for better tracking and auditability
+  git:
+    branch: ${GITHUB_REF_NAME}
+    origin_url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}
+
+# Workspace configuration
+workspace:
+  host: ${workspace.host}
+  
+# Artifacts configuration for building and deploying code
+artifacts:
+  default:
+    type: whl
+    build: uv build --wheel
+    path: .
+
+# Global tags applied to all resources
+tags:
+  project: retail_analytics
+  managed_by: databricks_asset_bundles
+
+# Validation settings
+presets:
+  name_prefix: "[${bundle.target}]"
 
 variables:
   catalog_name:
@@ -9,6 +34,14 @@ variables:
   schema_name:
     description: "Schema name for the pipeline tables"
     default: "retail_analytics"
+  
+  target_schema:
+    description: "Full target schema including environment"
+    default: "${var.schema_name}_${bundle.target}"
+  
+  service_principal_name:
+    description: "Service principal for production deployments"
+    default: ""
 
 include:
   - resources/*.yml
@@ -29,6 +62,13 @@ targets:
       catalog_name: "bu1_prod"
       schema_name: "retail_analytics"
 
-    # Production settings
+    # Production settings - run as service principal
     run_as:
       service_principal_name: ${var.service_principal_name}
+    
+    # Production-specific permissions
+    permissions:
+      - level: CAN_MANAGE
+        service_principal_name: ${var.service_principal_name}
+      - level: CAN_VIEW
+        group_name: data_engineers

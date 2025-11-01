@@ -6,5 +6,23 @@
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enabledMcpjsonServers": [
+    "serena",
+    "fetch",
+    "Context7",
+    "playwright",
+    "asana",
+    "genie-dev",
+    "uc-functions-dev",
+    "vs-dev",
+    "dbsql-dev",
+    "dbx-local-dev",
+    "terraform",
+    "databricks-sdk-py Docs",
+    "databricks-blog-posts Docs",
+    "databricks-bundles",
+    "Claude Code Skills",
+    "Hobson Agents"
+  ]
 }
