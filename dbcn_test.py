@@ -5,6 +5,7 @@ session creation, configuration retrieval, and table operations.
 """
 
 from typing import Optional
+
 from databricks.connect import DatabricksSession
 from pyspark.sql import SparkSession
 
@@ -22,7 +23,7 @@ def create_databricks_session(profile: str = 'dev') -> SparkSession:
       Exception: If session creation fails.
   """
   try:
-    session = DatabricksSession.builder.profile("dev").serverless().getOrCreate()
+    session = DatabricksSession.builder.profile('dev').serverless().getOrCreate()
     return session
   except Exception as e:
     raise Exception(f'Failed to create Databricks session: {e}')

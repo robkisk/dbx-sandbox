@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Read(//Users/robby.kiskanyan/.claude/**)",
-      "mcp__dbsql-dev__execute_sql_read_only"
+      "mcp__dbsql-dev__execute_sql_read_only",
+      "Bash(compgen:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []
