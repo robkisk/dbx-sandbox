@@ -4,7 +4,9 @@
       "Read(//Users/robby.kiskanyan/.claude/**)",
       "mcp__dbsql-dev__execute_sql_read_only",
       "Bash(compgen:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "mcp__glean__search",
+      "mcp__glean__get_document_content"
     ],
     "deny": [],
     "ask": []
