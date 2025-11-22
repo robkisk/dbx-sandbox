@@ -59,3 +59,4 @@ wheels/
 
 .databricks
 .cursor/mcp.json
+.mcp.json
