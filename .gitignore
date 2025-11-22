@@ -56,7 +56,8 @@ venv.bak/
 wheels/
 *.cpython-311.pyc
 *.cpython-312.pyc
-*.cpython-312.pyc
 
 .databricks
 .mcp.json
+.cursor/mcp.json
+.cursor/mcp.json
